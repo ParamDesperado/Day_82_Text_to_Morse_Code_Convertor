@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Morse Code Converter | Text to Morse & Morse to Text</title>
+    <meta name="description"
+        content="Instantly convert English text to Morse code and Morse code back to English. Features real-time translation, audio playback, copy to clipboard, and a full Morse code reference chart.">
+    <meta name="keywords"
+        content="morse code, morse code converter, text to morse, morse to text, morse code translator, morse code audio">
+    <meta name="author" content="Param Sangani">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://paramsangani.dev/morse-code-converter">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Morse Code Converter | Text to Morse & Morse to Text">
+    <meta property="og:description"
+        content="Instantly convert English text to Morse code and Morse code back to English. Features real-time translation, audio playback, and a full Morse code reference chart.">
+    <meta property="og:url" content="https://paramsangani.dev/morse-code-converter">
+    <meta property="og:site_name" content="Morse Code Converter">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Morse Code Converter">
+    <meta name="twitter:description"
+        content="Instantly convert English text to Morse code and back, with audio playback.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-badge">
+                <i class="fa-solid fa-signal"></i>
+                <span>Real-time Translation</span>
+            </div>
+            <h1>Morse Code <span class="accent">Converter</span></h1>
+            <p class="subtitle">Translate between English & Morse code instantly — with audio playback and a full
+                reference chart.</p>
+        </header>
+
+        <!-- Main Panel -->
+        <main class="glass-panel" id="main-panel">
+            <!-- Toolbar -->
+            <div class="toolbar" role="toolbar" aria-label="Converter controls">
+                <div class="direction-indicator" aria-live="polite">
+                    <span id="label-source" class="lang-label active-lang">English</span>
+                    <button id="btn-swap" class="icon-btn swap-btn" title="Swap Translation Direction"
+                        aria-label="Swap translation direction">
+                        <i class="fa-solid fa-right-left" aria-hidden="true"></i>
+                    </button>
+                    <span id="label-target" class="lang-label">Morse</span>
+                </div>
+                <div class="actions">
+                    <button id="btn-play" class="icon-btn" title="Play Morse Code as Audio"
+                        aria-label="Play Morse code audio">
+                        <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+                    </button>
+                    <button id="btn-download" class="icon-btn" title="Download as .txt file"
+                        aria-label="Download translation as text file">
+                        <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    </button>
+                    <button id="btn-copy" class="icon-btn" title="Copy Output to Clipboard"
+                        aria-label="Copy output to clipboard">
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                    <button id="btn-clear" class="icon-btn" title="Clear All" aria-label="Clear all text">
+                        <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- I/O Section -->
+            <div class="io-section">
+                <div class="text-panel input-panel">
+                    <label for="input-text" class="panel-label" id="input-label">Input</label>
+                    <textarea id="input-text" placeholder="Type here to translate..." aria-labelledby="input-label"
+                        spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+                    <div class="panel-footer">
+                        <span id="char-counter" class="char-counter">0 characters</span>
+                    </div>
+                </div>
+
+                <div class="divider-container" aria-hidden="true">
+                    <div class="divider"></div>
+                    <div class="divider-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="text-panel output-panel">
+                    <label for="output-text" class="panel-label" id="output-label">Output</label>
+                    <textarea id="output-text" placeholder="Translation will appear here..." readonly
+                        aria-labelledby="output-label" aria-live="polite" spellcheck="false"></textarea>
+                    <div class="panel-footer">
+                        <span id="status-msg" class="status-msg"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio Visualizer -->
+            <div id="audio-visualizer" class="audio-visualizer" aria-hidden="true">
+                <div class="morse-dot-display" id="morse-dot-display"></div>
+                <div class="audio-status" id="audio-status">Press play to hear the Morse code</div>
+            </div>
+        </main>
+
+        <!-- Morse Reference Chart -->
+        <section class="reference-section" id="reference-section" aria-labelledby="reference-heading">
+            <div class="reference-header">
+                <h2 id="reference-heading">
+                    <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                    Morse Code Reference Chart
+                </h2>
+                <button id="btn-toggle-ref" class="toggle-ref-btn" aria-expanded="false" aria-controls="reference-grid">
+                    <span>Show Chart</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="reference-grid" class="reference-grid" hidden>
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+                Built with passion by <strong>Param Sangani</strong>
+                &nbsp;&bull;&nbsp;
+                <span>Day 82 of 100 Days of Code</span>
+            </p>
+            <p class="footer-sub">&copy; 2026 Param Sangani. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
