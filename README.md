@@ -47,66 +47,6 @@ No installation required.
 
 ---
 
-### Option 2: Run Locally
-
-Clone the repository:
-
-```bash
-git clone https://github.com/your-username/Day_82_Text_to_Morse_Code_Convertor.git
-cd Day_82_Text_to_Morse_Code_Convertor
-```
-
-Start a local server:
-
-```bash
-npx serve .
-```
-
-or
-
-```bash
-python -m http.server 8080
-```
-
-Then open:
-
-```text
-http://localhost:8080
-```
-
----
-
-### Python CLI Version
-
-A command-line implementation is also included.
-
-Run:
-
-```bash
-python main.py
-```
-
-Requirements:
-
-- Python 3.6+
-- No external dependencies
-
----
-
-## 🗂️ Project Structure
-
-```text
-Day_82_Text_to_Morse_Code_Convertor/
-│
-├── index.html      # Main web application
-├── style.css       # Styling and responsive UI
-├── app.js          # Translation logic and audio playback
-├── main.py         # Python CLI implementation
-└── README.md
-```
-
----
-
 ## 🔡 Supported Characters
 
 ### Letters
@@ -175,16 +115,3 @@ Words are represented using:
 
 Day 82 Project of the **100 Days of Code Challenge**
 
-Connect with me:
-
-- GitHub: https://github.com/your-username
-- Portfolio: Add your portfolio link here
-- LinkedIn: Add your LinkedIn profile here
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-Feel free to use, modify, and distribute it for personal or commercial projects.
